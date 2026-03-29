@@ -200,7 +200,7 @@ export async function getTechNotes(tag?: string, difficulty?: string, limit: num
   try {
     const query: any = {
       database_id: DATABASE_IDS.notes,
-      sorts: [{ property: "Date", direction: "descending" }],
+      sorts: [{ timestamp: "last_edited_time", direction: "descending" }],
       page_size: limit,
     };
 
