@@ -1,19 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Header from "@/components/Header";
 import NoteCard from "@/components/NoteCard";
-import { TechNote, NoteTag, NoteDifficulty } from "@/lib/types";
+import { TechNote, NoteDifficulty } from "@/lib/types";
 
-const tags: NoteTag[] = ["React", "Next.js", "TypeScript", "AI", "JavaScript", "CSS", "Node.js", "其他"];
 const difficulties: NoteDifficulty[] = ["入门", "进阶", "高级"];
 
 export default function NotesPage() {
   const [notes, setNotes] = useState<TechNote[]>([]);
   const [filteredNotes, setFilteredNotes] = useState<TechNote[]>([]);
-  const [selectedTag, setSelectedTag] = useState<NoteTag | "全部">("全部");
+  const [selectedTag, setSelectedTag] = useState<string>("全部");
   const [selectedDifficulty, setSelectedDifficulty] = useState<NoteDifficulty | "全部">("全部");
   const [loading, setLoading] = useState(true);
+
+  // 动态从数据中提取所有标签
+  const tags = useMemo(() => {
+    const allTags = new Set<string>();
+    notes.forEach((note) => {
+      note.tags.forEach((tag) => allTags.add(tag));
+    });
+    return Array.from(allTags).sort();
+  }, [notes]);
 
   useEffect(() => {
     async function fetchData() {

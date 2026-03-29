@@ -49,13 +49,13 @@ export interface Fragment {
 }
 
 // Notes Types
-export type NoteTag = 'React' | 'Next.js' | 'TypeScript' | 'AI' | 'JavaScript' | 'CSS' | 'Node.js' | '其他';
+export type NoteTag = string; // 支持任意标签，动态从 Notion 获取
 export type NoteDifficulty = '入门' | '进阶' | '高级';
 
 export interface TechNote {
   id: string;
   title: string;
-  tags: NoteTag[];
+  tags: string[]; // 改为 string[] 以支持任意标签
   content: string;
   date: string;
   difficulty: NoteDifficulty;
