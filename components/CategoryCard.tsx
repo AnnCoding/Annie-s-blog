@@ -1,16 +1,17 @@
-import { Fragment, FragmentCategory } from "@/lib/types";
+import { Fragment } from "@/lib/types";
 
 interface CategoryCardProps {
   fragment: Fragment;
 }
 
-const categoryStyles: Record<FragmentCategory, { bg: string; text: string; icon: string }> = {
+const categoryStyles: Record<string, { bg: string; text: string; icon: string }> = {
   "AI学习": { bg: "bg-violet-100", text: "text-violet-700", icon: "🤖" },
   "健身打卡": { bg: "bg-green-100", text: "text-green-700", icon: "💪" },
   "羽毛球": { bg: "bg-blue-100", text: "text-blue-700", icon: "🏸" },
   "游泳": { bg: "bg-cyan-100", text: "text-cyan-700", icon: "🏊" },
   "理财炒股": { bg: "bg-amber-100", text: "text-amber-700", icon: "💰" },
   "社会思考": { bg: "bg-rose-100", text: "text-rose-700", icon: "🤔" },
+  "牛马不敢停": { bg: "bg-orange-100", text: "text-orange-700", icon: "🐴" },
 };
 
 const statusStyles: Record<string, { bg: string; text: string }> = {

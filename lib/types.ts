@@ -35,13 +35,13 @@ export interface TimelineEntry {
 }
 
 // Fragments Types
-export type FragmentCategory = 'AI学习' | '健身打卡' | '羽毛球' | '游泳' | '理财炒股' | '社会思考';
+export type FragmentCategory = string; // 支持任意分类，动态从 Notion 获取
 export type FragmentStatus = '进行中' | '已完成' | '归档';
 
 export interface Fragment {
   id: string;
   title: string;
-  category: FragmentCategory[];
+  category: string[]; // 改为 string[] 以支持任意分类
   content: string;
   date: string;
   status: FragmentStatus;
