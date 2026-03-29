@@ -9,8 +9,14 @@ import type {
 } from "./types";
 
 // Initialize Notion Client
+// The SDK automatically handles the auth header format
 const notion = new Client({
-  auth: process.env.NOTION_TOKEN,
+  auth: process.env.NOTION_TOKEN?.trim(),
+  // Force the correct auth format for new ntn_ tokens
+  // @ts-ignore - override internal auth header
+  headers: {
+    Authorization: `Bearer ${process.env.NOTION_TOKEN?.trim()}`,
+  },
 });
 
 // Database IDs
