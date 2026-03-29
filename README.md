@@ -1,4 +1,4 @@
-# Annie's Block
+# Annie's Blog
 
 一个多功能个人博客，整合生活记录、学习笔记和作品展示。采用 Next.js + Notion 架构，无需额外后台管理界面，直接在 Notion 中管理内容。
 
@@ -51,7 +51,7 @@ npm install
 
 1. 访问 [Notion My Integrations](https://www.notion.so/my-integrations)
 2. 点击 "New integration"
-3. 填写名称（如 "Annie's Block"）
+3. 填写名称（如 "Annie's Blog"）
 4. 选择关联的 workspace
 5. 复制生成的 "Internal Integration Token"
 

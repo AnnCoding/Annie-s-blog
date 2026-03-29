@@ -9,7 +9,7 @@
 1. 访问 https://www.notion.so/my-integrations
 2. 点击 **"New integration"** 或 **"新建集成"**
 3. 填写信息：
-   - **Name**: `Annie's Block Blog`
+   - **Name**: `Annie's Blog Blog`
    - **Associated workspace**: 选择你的工作区
    - **Type**: Internal（内部）
 4. 点击 **Submit**（提交）
@@ -75,7 +75,7 @@ NOTION_DEMOS_DB=mnop1234567890
 1. 在 Notion 中找到新创建的数据库
 2. 点击右上角 **`···`**
 3. 选择 **"Add connections"** 或 **"添加连接"**
-4. 选择你的 Integration：**"Annie's Block Blog"**
+4. 选择你的 Integration：**"Annie's Blog Blog"**
 
 **对 4 个数据库都重复以上步骤！**
 

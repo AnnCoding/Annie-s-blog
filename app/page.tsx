@@ -148,7 +148,7 @@ export default function HomePage() {
             <div className="text-6xl mb-4 animate-bounce">👋</div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               <span className="bg-gradient-to-r from-ocean-deep via-ocean-medium to-sakura-coral bg-clip-text text-transparent">
-                Annie&apos;s Block
+                Annie&apos;s Blog
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-text-secondary mb-8 max-w-2xl mx-auto">
@@ -237,7 +237,7 @@ export default function HomePage() {
         <footer className="py-8 px-4 text-center text-text-secondary">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="text-2xl">🌸</span>
-            <span className="text-ocean-deep font-semibold">Annie&apos;s Block</span>
+            <span className="text-ocean-deep font-semibold">Annie&apos;s Blog</span>
           </div>
           <p className="text-sm">
             用 Next.js 和 Notion 构建 · 记录成长的每一个瞬间

@@ -38,7 +38,7 @@ export default function Header() {
           <Link href="/" className="flex items-center space-x-2">
             <span className="text-2xl">🌸</span>
             <span className="text-xl font-bold bg-gradient-to-r from-ocean-deep to-sakura-pink bg-clip-text text-transparent">
-              Annie&apos;s Block
+              Annie&apos;s Blog
             </span>
           </Link>
 
