@@ -25,7 +25,7 @@ export default function CategoryCard({ fragment }: CategoryCardProps) {
   const categoryStyle = categoryStyles[mainCategory] || {
     bg: "bg-gray-100",
     text: "text-gray-700",
-    icon: "📝",
+    icon: "", // 去掉默认图标
   };
   const statusStyle = statusStyles[fragment.status] || statusStyles["进行中"];
 
@@ -36,7 +36,7 @@ export default function CategoryCard({ fragment }: CategoryCardProps) {
         <span
           className={`px-3 py-1 rounded-full text-sm font-medium ${categoryStyle.bg} ${categoryStyle.text} flex items-center gap-1.5`}
         >
-          <span>{categoryStyle.icon}</span>
+          {categoryStyle.icon && <span>{categoryStyle.icon}</span>}
           <span>{mainCategory}</span>
         </span>
         <span
