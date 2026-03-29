@@ -13,8 +13,6 @@ const categoryIcons: Record<string, string> = {
   "理财炒股": "💰",
   "社会思考": "🤔",
   "牛马不敢停": "🐴",
-  // 默认图标
-  default: "📌",
 };
 
 export default function FragmentsPage() {
@@ -33,7 +31,7 @@ export default function FragmentsPage() {
     return Array.from(allCategories).map((cat) => ({
       value: cat,
       label: cat,
-      icon: categoryIcons[cat] || categoryIcons.default,
+      icon: categoryIcons[cat] || "", // 没有 predefined icon 就用空字符串
     }));
   }, [fragments]);
 
@@ -103,7 +101,7 @@ export default function FragmentsPage() {
                     : "bg-white text-text-secondary hover:bg-ocean-light"
                 }`}
               >
-                {cat.icon} {cat.label}
+                {cat.icon && <span>{cat.icon}</span>} {cat.label}
               </button>
             ))}
           </div>
