@@ -46,6 +46,7 @@ export interface Fragment {
   date: string;
   status: FragmentStatus;
   created_time: string;
+  url?: string; // Notion page URL
 }
 
 // Notes Types

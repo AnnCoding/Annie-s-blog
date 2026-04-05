@@ -4,6 +4,19 @@ interface CategoryCardProps {
   fragment: Fragment;
 }
 
+// Helper function to check if a string is a valid URL
+function isValidUrl(string: string): boolean {
+  if (!string || typeof string !== 'string') return false;
+  const trimmed = string.trim();
+  if (!trimmed) return false;
+  try {
+    const url = new URL(trimmed);
+    return url.protocol === "http:" || url.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
 const categoryStyles: Record<string, { bg: string; text: string; icon: string }> = {
   "AI学习": { bg: "bg-violet-100", text: "text-violet-700", icon: "🤖" },
   "健身打卡": { bg: "bg-green-100", text: "text-green-700", icon: "💪" },
@@ -21,7 +34,7 @@ const statusStyles: Record<string, { bg: string; text: string }> = {
 };
 
 export default function CategoryCard({ fragment }: CategoryCardProps) {
-  const mainCategory = fragment.category[0];
+  const mainCategory = fragment.category[0] || "默认";
   const categoryStyle = categoryStyles[mainCategory] || {
     bg: "bg-gray-100",
     text: "text-gray-700",
@@ -46,15 +59,40 @@ export default function CategoryCard({ fragment }: CategoryCardProps) {
         </span>
       </div>
 
-      {/* Title */}
-      <h3 className="text-lg font-semibold text-text-primary mb-2 line-clamp-2">
-        {fragment.title}
-      </h3>
+      {/* Title - clickable link to Notion page */}
+      {fragment.url ? (
+        <a
+          href={fragment.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-lg font-semibold text-text-primary mb-2 line-clamp-2 hover:text-ocean-medium transition-colors block cursor-pointer"
+          title="点击跳转到 Notion 页面"
+        >
+          {fragment.title}
+        </a>
+      ) : (
+        <h3 className="text-lg font-semibold text-text-primary mb-2 line-clamp-2">
+          {fragment.title}
+        </h3>
+      )}
 
       {/* Content preview */}
-      <p className="text-text-secondary text-sm line-clamp-3 mb-3 flex-grow">
-        {fragment.content}
-      </p>
+      <div className="mb-3 flex-grow">
+        {isValidUrl(fragment.content) ? (
+          <a
+            href={fragment.content.trim()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-ocean-medium hover:text-ocean-deep text-sm line-clamp-3 transition-colors underline underline-offset-2 break-all cursor-pointer z-10 relative"
+          >
+            {fragment.content}
+          </a>
+        ) : (
+          <p className="text-text-secondary text-sm line-clamp-3">
+            {fragment.content}
+          </p>
+        )}
+      </div>
 
       {/* Date */}
       <div className="flex items-center justify-between text-xs text-text-secondary pt-3 border-t border-ocean-light">

@@ -49,6 +49,16 @@ function getTextFromProperty(property: any): string {
   }
 }
 
+// Helper function to normalize URL (ensure it has protocol)
+function normalizeUrl(url: string): string {
+  if (!url) return "";
+  url = url.trim();
+  if (url && !url.match(/^https?:\/\//)) {
+    return "https://" + url;
+  }
+  return url;
+}
+
 // Helper function to get array from multi_select
 function getMultiSelectArray(property: any): string[] {
   if (!property || property.type !== "multi_select") return [];
@@ -175,7 +185,16 @@ export async function getFragments(category?: string, limit: number = 50): Promi
 
     for (const page of response.results as unknown as NotionPage[]) {
       const props = page.properties;
-      const content = await getPageBlocks(page.id);
+      // Try to get content from Content property first, then fall back to page blocks
+      let content = getTextFromProperty(props.Content || props.content);
+      // Only fetch blocks if Content property is empty
+      if (!content) {
+        content = await getPageBlocks(page.id);
+      }
+
+      // Get URL from database URL field if present, otherwise use page URL
+      const urlFromDb = getTextFromProperty(props.url || props.URL || props.Url || props.link || props.Link);
+      const urlField = urlFromDb ? normalizeUrl(urlFromDb) : page.url;
 
       fragments.push({
         id: page.id,
@@ -185,6 +204,7 @@ export async function getFragments(category?: string, limit: number = 50): Promi
         date: getTextFromProperty(props.Date || props.date),
         status: (props.Status || props.status)?.select?.name || "进行中",
         created_time: page.created_time,
+        url: urlField, // Use URL from database field or default to page URL
       });
     }
 
