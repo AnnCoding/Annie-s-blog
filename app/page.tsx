@@ -11,6 +11,9 @@ import {
   getDemos,
 } from "@/lib/notion";
 
+// 禁用页面缓存，每次访问都从 Notion 拉取最新数据
+export const revalidate = 0;
+
 // 获取首页预览数据（每个模块取前 3 条）
 async function getHomePageData() {
   try {
@@ -80,8 +83,13 @@ export default async function HomePage() {
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-bold text-ocean-deep">📅 最新动态</h2>
-              <Link href="/timeline" className="text-sakura-coral hover:text-sakura-pink transition-colors">
+              <h2 className="text-3xl font-bold text-ocean-deep">
+                📅 最新动态
+              </h2>
+              <Link
+                href="/timeline"
+                className="text-sakura-coral hover:text-sakura-pink transition-colors"
+              >
                 查看全部 →
               </Link>
             </div>
@@ -103,8 +111,13 @@ export default async function HomePage() {
         <section className="py-16 px-4 bg-white/50">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-bold text-ocean-deep">✨ 碎片记录</h2>
-              <Link href="/fragments" className="text-sakura-coral hover:text-sakura-pink transition-colors">
+              <h2 className="text-3xl font-bold text-ocean-deep">
+                ✨ 碎片记录
+              </h2>
+              <Link
+                href="/fragments"
+                className="text-sakura-coral hover:text-sakura-pink transition-colors"
+              >
                 查看全部 →
               </Link>
             </div>
@@ -126,8 +139,13 @@ export default async function HomePage() {
         <section className="py-16 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-bold text-ocean-deep">📚 技术笔记</h2>
-              <Link href="/notes" className="text-sakura-coral hover:text-sakura-pink transition-colors">
+              <h2 className="text-3xl font-bold text-ocean-deep">
+                📚 技术笔记
+              </h2>
+              <Link
+                href="/notes"
+                className="text-sakura-coral hover:text-sakura-pink transition-colors"
+              >
                 查看全部 →
               </Link>
             </div>
@@ -149,8 +167,13 @@ export default async function HomePage() {
         <section className="py-16 px-4 bg-white/50">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-bold text-ocean-deep">🚀 精选 Demo</h2>
-              <Link href="/demos" className="text-sakura-coral hover:text-sakura-pink transition-colors">
+              <h2 className="text-3xl font-bold text-ocean-deep">
+                🚀 精选 Demo
+              </h2>
+              <Link
+                href="/demos"
+                className="text-sakura-coral hover:text-sakura-pink transition-colors"
+              >
                 查看全部 →
               </Link>
             </div>
@@ -172,7 +195,9 @@ export default async function HomePage() {
         <footer className="py-8 px-4 text-center text-text-secondary">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="text-2xl">🌸</span>
-            <span className="text-ocean-deep font-semibold">Annie&apos;s Blog</span>
+            <span className="text-ocean-deep font-semibold">
+              Annie&apos;s Blog
+            </span>
           </div>
           <p className="text-sm">
             用 Next.js 和 Notion 构建 · 记录成长的每一个瞬间
